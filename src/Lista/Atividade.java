@@ -1,13 +1,13 @@
+package Lista;
+
 /**
- * Created by usuario on 28/04/2016.
+ * Created by Evandson Maranhão on 28/04/2016.
  */
-public class Teste {
+public class Atividade {
 
     public static void main(String[] args) {
 
         System.out.println("7+2:"+(7+2));
-
-
     }
 
 
