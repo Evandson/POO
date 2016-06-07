@@ -10,45 +10,61 @@ public class Venda {
 
     private double trocoTotal = 125.50;
     private double trocoCliente = 0;
-    public double ganhoVendas = 0;
+    private double ganhoVendas = 0;
 
     Sukita novaSukita = new Sukita();
     CocaCola novaCocaCola = new CocaCola();
     Sprite novaSprite = new Sprite();
+
+    public double getTrocoTotal() {
+        return trocoTotal;
+    }
+
+    public void setTrocoTotal(double trocoTotal) {
+        this.trocoTotal = trocoTotal;
+    }
+
+    public double getGanhoVendas() {
+        return ganhoVendas;
+    }
+
+    public void setGanhoVendas(double ganhoVendas) {
+        this.ganhoVendas = ganhoVendas;
+    }
 
     public void inserirMoedas(double troco){
         this.trocoTotal += troco;
     }
 
     public void verificarTroco(){
-        System.out.println(this.trocoTotal);
+        System.out.println(getTrocoTotal());
     }
 
     public void novaVenda(int codigo, double dinheiro){
         switch(codigo){
             case 1:
-                if((novaSukita.quantidade > 0) && ((dinheiro - novaSukita.valor) == 0)) {
-                    novaSukita.quantidade--;
+                if((novaSukita.getQuantidade() > 0) && ((dinheiro - novaSukita.getValor()) == 0)) {
                     vendaSukita++;
                     ganhoVendas += dinheiro;
+                    novaSukita.setQuantidade(-1);
                     System.out.println("Pegue o Refrigerante!");
                 }
-                else if((novaSukita.quantidade > 0) && ((dinheiro - novaSukita.valor) > 0) && (trocoTotal >= dinheiro - novaSukita.valor)){
-                    novaSukita.quantidade--;
+                else if((novaSukita.getQuantidade() > 0) && ((dinheiro - novaSukita.getValor()) > 0) &&
+                        (trocoTotal >= dinheiro - novaSukita.getValor())){
                     vendaSukita++;
                     ganhoVendas += dinheiro;
-                    trocoCliente = (dinheiro - novaSukita.valor);
+                    trocoCliente = (dinheiro - novaSukita.getValor());
                     trocoTotal -= trocoCliente;
                     System.out.println("Pegue o Refrigerante! Troco: "+trocoCliente);
                 }
-                else if (novaSukita.quantidade == 0){
+                else if (novaSukita.getQuantidade() == 0){
                     System.out.println("Produto Indisponível!");
                 }
-                else if (dinheiro < novaSukita.valor){
+                else if (dinheiro < novaSukita.getValor()){
                     System.out.println("Valor Insuficiente para compra");
                 }
-                else if ((novaSukita.quantidade > 0) && ((dinheiro - novaSukita.valor) > 0) && (trocoTotal < dinheiro - novaSukita.valor)){
-                    novaSukita.quantidade--;
+                else if ((novaSukita.getQuantidade() > 0) && ((dinheiro - novaSukita.getValor()) > 0) &&
+                        (trocoTotal < dinheiro - novaSukita.getValor())){
                     vendaSukita++;
                     ganhoVendas += dinheiro;
                     System.out.println("Pegue o Refrigerante. Infelizmente faltou troco!");

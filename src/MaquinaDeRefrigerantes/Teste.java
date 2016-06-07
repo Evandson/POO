@@ -33,11 +33,16 @@ public class Teste {
 
         int c;
         double d;
-        vendaRefri.novaVenda(1,200);
+        System.out.println("Informe a opção:");
+        c = sc.nextInt();
+        System.out.println("coloque as Moedas:");
+        d = sc.nextDouble();
+        vendaRefri.novaVenda(c,d);
         System.out.println("Nova quantidade de Sukita");
+        //Sukita.retirarRefrigerante();
         Sukita.consultarEstoque();
         vendaRefri.verificarTroco();
         System.out.println("Vendidas:"+Venda.vendaSukita);
-        System.out.println(vendaRefri.ganhoVendas);
+        System.out.println(vendaRefri.getGanhoVendas());
     }
 }

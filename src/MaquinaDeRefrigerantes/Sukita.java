@@ -4,10 +4,19 @@ package MaquinaDeRefrigerantes;
  * Created by Evandson on 06/06/2016.
  */
 public class Sukita implements ControleEstoque {
-    protected int quantidade = 10;
-    double valor = 2.50;
+    private int quantidade = 10;
+    private double valor = 2.50;
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
 
     public int getQuantidade() {
+
         return quantidade;
     }
 
@@ -17,7 +26,7 @@ public class Sukita implements ControleEstoque {
 
     @Override
     public void consultarEstoque() {
-        System.out.println(this.quantidade);
+        System.out.println(getQuantidade());
     }
 
     @Override
