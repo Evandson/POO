@@ -36,10 +36,6 @@ public class Venda {
         this.trocoTotal += troco;
     }
 
-    public void verificarTroco(){
-        System.out.println(getTrocoTotal());
-    }
-
     public void novaVenda(int codigo, double dinheiro){
         switch(codigo){
             case 1:

@@ -16,7 +16,6 @@ public class Sukita implements ControleEstoque {
     }
 
     public int getQuantidade() {
-
         return quantidade;
     }
 
