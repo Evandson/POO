@@ -7,6 +7,7 @@ public class Atividade {
 
     public static void main(String[] args) {
 
+        String dia$noite;
         System.out.println("7+2:"+(7+2));
     }
 
