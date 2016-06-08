@@ -10,7 +10,7 @@ public class Venda {
 
     private double trocoTotal = 125.50;
     private double trocoCliente = 0;
-    private double ganhoVendas = 0;
+    private double ganhoVendas = 1;
 
     Sukita novaSukita = new Sukita();
     CocaCola novaCocaCola = new CocaCola();
@@ -35,39 +35,161 @@ public class Venda {
     public void inserirMoedas(double troco){
         this.trocoTotal += troco;
     }
+    public void verificarTroco(){
+        System.out.println(getTrocoTotal());
+    }
+
+    public void verificaGanhoVendas(){
+        System.out.println(getGanhoVendas());
+    }
+
+    private void compraSemTroco(int codigo, double dinheiro){
+        switch(codigo){
+            case 1:
+                vendaSukita++;
+                ganhoVendas += dinheiro;
+                System.out.println("Pegue sua Sukita!");
+                break;
+            case 2:
+                vendaCocaCola++;
+                ganhoVendas += dinheiro;
+                System.out.println("Pegue sua Coca Cola!");
+                break;
+            case 3:
+                vendaSprite++;
+                ganhoVendas += dinheiro;
+                System.out.println("Pegue sua Sprite");
+                break;
+        }
+    }
+
+    private void compraComTroco(int codigo, double dinheiro){
+        switch(codigo){
+            case 1:
+                vendaSukita++;
+                ganhoVendas += dinheiro;
+                trocoCliente = (dinheiro - novaSukita.getValor());
+                trocoTotal -= trocoCliente;
+                System.out.println("Pegue o Refrigerante! Troco: "+trocoCliente);
+                break;
+            case 2:
+                vendaCocaCola++;
+                ganhoVendas += dinheiro;
+                trocoCliente = (dinheiro - novaCocaCola.getValor());
+                trocoTotal -= trocoCliente;
+                System.out.println("Pegue o Refrigerante! Troco: "+trocoCliente);
+                break;
+            case 3:
+                vendaSprite++;
+                ganhoVendas += dinheiro;
+                trocoCliente = (dinheiro - novaSprite.getValor());
+                trocoTotal -= trocoCliente;
+                System.out.println("Pegue o Refrigerante! Troco: "+trocoCliente);
+                break;
+        }
+    }
+
+    private void entregarSemTroco(int codigo, double dinheiro){
+        switch(codigo){
+            case 1:
+                vendaSukita++;
+                ganhoVendas += dinheiro;
+                System.out.println("Pegue o Refrigerante. Infelizmente faltou troco!");
+                break;
+            case 2:
+                vendaCocaCola++;
+                ganhoVendas += dinheiro;
+                System.out.println("Pegue o Refrigerante. Infelizmente faltou troco!");
+                break;
+            case 3:
+                vendaSprite++;
+                ganhoVendas += dinheiro;
+                System.out.println("Pegue o Refrigerante. Infelizmente faltou troco!");
+                break;
+        }
+    }
 
     public void novaVenda(int codigo, double dinheiro){
         switch(codigo){
             case 1:
-                if((novaSukita.getQuantidade() > 0) && ((dinheiro - novaSukita.getValor()) == 0)) {
-                    vendaSukita++;
-                    ganhoVendas += dinheiro;
-                    novaSukita.setQuantidade(-1);
-                    System.out.println("Pegue o Refrigerante!");
+                if((novaSukita.getQuantidade() >= 1) && ((dinheiro - novaSukita.getValor()) == 0)) {
+                    //vendaSukita++;
+                    //ganhoVendas += dinheiro;
+                    //System.out.println("Pegue o Refrigerante!");
+                    compraSemTroco(codigo, dinheiro);
                 }
-                else if((novaSukita.getQuantidade() > 0) && ((dinheiro - novaSukita.getValor()) > 0) &&
+                else if((novaSukita.getQuantidade() >= 1) && ((dinheiro - novaSukita.getValor()) > 0) &&
                         (trocoTotal >= dinheiro - novaSukita.getValor())){
-                    vendaSukita++;
-                    ganhoVendas += dinheiro;
-                    trocoCliente = (dinheiro - novaSukita.getValor());
-                    trocoTotal -= trocoCliente;
-                    System.out.println("Pegue o Refrigerante! Troco: "+trocoCliente);
+                    //vendaSukita++;
+                    //ganhoVendas += dinheiro;
+                    //trocoCliente = (dinheiro - novaSukita.getValor());
+                    //trocoTotal -= trocoCliente;
+                    //System.out.println("Pegue o Refrigerante! Troco: "+trocoCliente);
+                    compraComTroco(codigo, dinheiro);
                 }
                 else if (novaSukita.getQuantidade() == 0){
-                    System.out.println("Produto Indisponível!");
+                    System.out.println("Sukita está indisponível no momento!");
                 }
                 else if (dinheiro < novaSukita.getValor()){
                     System.out.println("Valor Insuficiente para compra");
                 }
                 else if ((novaSukita.getQuantidade() > 0) && ((dinheiro - novaSukita.getValor()) > 0) &&
                         (trocoTotal < dinheiro - novaSukita.getValor())){
-                    vendaSukita++;
-                    ganhoVendas += dinheiro;
-                    System.out.println("Pegue o Refrigerante. Infelizmente faltou troco!");
+                    //vendaSukita++;
+                    //ganhoVendas += dinheiro;
+                    //System.out.println("Pegue o Refrigerante. Infelizmente faltou troco!");
+                    entregarSemTroco(codigo, dinheiro);
                 }
                 break;
+            case 2:
+                if((novaCocaCola.getQuantidade() > 0) && ((dinheiro - novaCocaCola.getValor()) == 0)) {
+                    //vendaCocaCola++;
+                    //ganhoVendas += dinheiro;
+                    //System.out.println("Pegue o Refrigerante!");
+                    compraSemTroco(codigo, dinheiro);
+                }
+                else if((novaCocaCola.getQuantidade() > 0) && ((dinheiro - novaCocaCola.getValor()) > 0) &&
+                        (trocoTotal >= dinheiro - novaCocaCola.getValor())){
+                    //vendaCocaCola++;
+                    //ganhoVendas += dinheiro;
+                    //trocoCliente = (dinheiro - novaCocaCola.getValor());
+                    //trocoTotal -= trocoCliente;
+                    //System.out.println("Pegue o Refrigerante! Troco: "+trocoCliente);
+                    compraComTroco(codigo, dinheiro);
+                }
+                else if (novaCocaCola.getQuantidade() == 0){
+                    System.out.println("Coca Cola está indisponível no momento!");
+                }
+                else if (dinheiro < novaCocaCola.getValor()){
+                    System.out.println("Valor Insuficiente para compra!");
+
+                }
+                else if ((novaCocaCola.getQuantidade() > 0) && ((dinheiro - novaCocaCola.getValor()) > 0) &&
+                        (trocoTotal < dinheiro - novaCocaCola.getValor())){
+                    //vendaCocaCola++;
+                    //ganhoVendas += dinheiro;
+                    //System.out.println("Pegue o Refrigerante. Infelizmente faltou troco!");
+                    entregarSemTroco(codigo, dinheiro);
+                }
+                break;
+            case 3:
+                if((novaSprite.getQuantidade() > 0) && ((dinheiro - novaSprite.getValor()) == 0)) {
+                    compraSemTroco(codigo, dinheiro);
+                }
+                else if((novaSprite.getQuantidade() > 0) && ((dinheiro - novaSprite.getValor()) > 0) &&
+                        (trocoTotal >= dinheiro - novaSprite.getValor())) {
+                    compraComTroco(codigo, dinheiro);
+                }
+                else if (novaSprite.getQuantidade() == 0){
+                    System.out.println("Sprite está indisponível no momento!");
+                }
+                else if (dinheiro < novaSprite.getValor()){
+                    System.out.println("Valor Insuficiente para compra!");
+                }
+                else if ((novaSprite.getQuantidade() > 0) && ((dinheiro - novaSprite.getValor()) > 0) &&
+                        (trocoTotal < dinheiro - novaSprite.getValor())){
+                    entregarSemTroco(codigo, dinheiro);}
+                break;
         }
-
     }
-
 }

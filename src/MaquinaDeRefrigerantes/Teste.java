@@ -20,6 +20,7 @@ public class Teste {
         boolean loop = true;
         int opcao = -1;
         System.out.println("Maquina de Refrigerantes!");
+        System.out.println();
 
         while (loop) {
 
@@ -36,7 +37,7 @@ public class Teste {
                 case 1:
                     System.out.println("Insira o dinheiro:");
                     double dinheiro = sc.nextDouble();
-                    System.out.println("Sukita(1) \n Coca Cola(2) \n Sprite(3)");
+                    System.out.println("Sukita(1) \nCoca Cola(2) \nSprite(3)");
                     int produto = sc.nextInt();
                     vendaRefri.novaVenda(produto, dinheiro);
                     if (produto == 1 && s.getQuantidade() > 0){
@@ -48,10 +49,13 @@ public class Teste {
                     }
                     break;
                 case 2:
-                    System.out.println("Inserir Produto(1) \n Inserir Moedas para troco(2) \n Histórico de vendas(3) \n " +
-                            "Quantidade de dinheiro na maquina(4) \n Estoque de produtos(5)");
+                    System.out.println("Inserir Produto(1) \nInserir Moedas para troco(2) \nHistórico de vendas(3) \n"+
+                            "Quantidade de dinheiro na maquina(4) \nEstoque de produtos(5)");
+                    System.out.println();
                     int funcao = sc.nextInt();
                     if(funcao == 1){
+                        System.out.println("INSERIR PRODUTOS...");
+                        System.out.println();
                         System.out.println("Quantidade de Sukita:");
                         Sukita.consultarEstoque();
                         System.out.println("Inserir Sukita:");
@@ -60,6 +64,7 @@ public class Teste {
                         System.out.println("Nova quantidade:");
                         Sukita.consultarEstoque();
 
+                        System.out.println();
                         System.out.println("Quantidade de Coca Cola:");
                         CocaCola.consultarEstoque();
                         System.out.println("Inserir Coca Cola:");
@@ -68,6 +73,7 @@ public class Teste {
                         System.out.println("Nova quantidade:");
                         CocaCola.consultarEstoque();
 
+                        System.out.println();
                         System.out.println("Quantidade de Sprite:");
                         Sprite.consultarEstoque();
                         System.out.println("Inserir Sprite:");
@@ -77,30 +83,35 @@ public class Teste {
                         Sprite.consultarEstoque();
                     }
                     else if(funcao == 2){
-
+                        System.out.println("INSERIR MODEDAS...");
+                        System.out.println();
                         System.out.println("Quantidade de Moedas para troco no momento:");
-                        vendaRefri.getTrocoTotal();
+                        vendaRefri.verificarTroco();
                         System.out.println("Adicionar Moedas:");
-                        double moeda = sc.nextInt();
+                        double moeda = sc.nextDouble();
                         vendaRefri.inserirMoedas(moeda);
                         System.out.println("Novo valor para troco:");
-                        vendaRefri.getTrocoTotal();
+                        vendaRefri.verificarTroco();
                     }
                     else if(funcao == 3){
-                        System.out.println("Histórico das Vendas..");
+                        System.out.println("HISTÓRICO DE VENDAS..");
+                        System.out.println();
                         System.out.println("Sukita: "+Venda.vendaSukita);
                         System.out.println("Coca Cola: "+Venda.vendaCocaCola);
                         System.out.println("Sprite: "+Venda.vendaSprite);
                     }
                     else if(funcao == 4){
-                        System.out.println("Caixa da Maquina..");
+                        System.out.println("CAIXA DA MAQUINA..");
+                        System.out.println();
                         System.out.println("Dinheiro de vendas:");
-                        vendaRefri.getGanhoVendas();
+                        vendaRefri.verificaGanhoVendas();
                         System.out.println("Dinheiro para troco:");
-                        vendaRefri.getTrocoTotal();
+                        vendaRefri.verificarTroco();
+                        System.out.println();
                     }
                     else if(funcao == 5){
-                        System.out.println("Estoque de Produtos..");
+                        System.out.println("ESTOQUE DE PRODUTOS..");
+                        System.out.println();
                         System.out.println("Quantidade de Sukita:");
                         Sukita.consultarEstoque();
                         System.out.println("Quantidade de Coca Cola:");
@@ -112,17 +123,18 @@ public class Teste {
                     }
                     break;
                 case 3:
-                System.out.println("Obrigado!");
+                    System.out.println();
+                    System.out.println("Obrigado!");
                     loop = false;
                     break;
-                case 4:
-                    break;
                 default:
+                    System.out.println();
                     System.out.println("Desculpe, pedido inexistente!");
+                    System.out.println();
             }
         }
     }
     public static void menu() {
-        System.out.println("Comprar Refrigerante(1) \n Painel Usuário(2) \n Sair(3)");
+        System.out.println("COMPRAR REFRIGERANTE(1) \nPAINEL USUÁRIO(2) \nSAIR(3)");
     }
 }

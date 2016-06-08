@@ -4,7 +4,7 @@ package MaquinaDeRefrigerantes;
  * Created by Evandson on 06/06/2016.
  */
 public class Sprite implements ControleEstoque {
-    private int quantidade = 5;
+    private int quantidade = 2;
     private double valor = 2.50;
 
     public int getQuantidade() {
