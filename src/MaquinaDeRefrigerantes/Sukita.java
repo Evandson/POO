@@ -4,7 +4,7 @@ package MaquinaDeRefrigerantes;
  * Created by Evandson on 06/06/2016.
  */
 public class Sukita implements ControleEstoque {
-    private int quantidade = 10;
+    private int quantidade = 2;
     private double valor = 2.50;
 
     public double getValor() {
@@ -25,7 +25,7 @@ public class Sukita implements ControleEstoque {
 
     @Override
     public void consultarEstoque() {
-        System.out.println(getQuantidade());
+        System.out.println(this.quantidade);
     }
 
     @Override
@@ -34,7 +34,9 @@ public class Sukita implements ControleEstoque {
     }
 
     @Override
-    public void retirarRefrigerante(){
-        this.quantidade--;
+    public void retirarRefrigerante() {
+        if (this.quantidade > 0) {
+            this.quantidade--;
+        }
     }
 }

@@ -25,16 +25,17 @@ public class Sprite implements ControleEstoque {
 
     @Override
     public void consultarEstoque() {
-        System.out.println(getQuantidade());
+        System.out.println(this.quantidade);
     }
 
     @Override
     public void inserirRefrigerante(int quantidade) {
         this.quantidade += quantidade;
     }
-
     @Override
     public void retirarRefrigerante(){
-        this.quantidade--;
+        if(this.quantidade > 0){
+            this.quantidade--;
+        }
     }
 }

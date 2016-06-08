@@ -4,7 +4,7 @@ package MaquinaDeRefrigerantes;
  * Created by Evandson on 06/06/2016.
  */
 public class CocaCola implements ControleEstoque {
-    private int quantidade = 15;
+    private int quantidade = 2;
     private double valor = 3.50;
 
     public double getValor() {
@@ -25,7 +25,7 @@ public class CocaCola implements ControleEstoque {
 
     @Override
     public void consultarEstoque() {
-        System.out.println(getQuantidade());
+        System.out.println(this.quantidade);
 
     }
 
@@ -36,6 +36,8 @@ public class CocaCola implements ControleEstoque {
 
     @Override
     public void retirarRefrigerante(){
-        this.quantidade--;
+        if(this.quantidade > 0){
+            this.quantidade--;
+        }
     }
 }

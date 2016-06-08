@@ -40,11 +40,11 @@ public class Teste {
                     System.out.println("Sukita(1) \nCoca Cola(2) \nSprite(3)");
                     int produto = sc.nextInt();
                     vendaRefri.novaVenda(produto, dinheiro);
-                    if (produto == 1 && s.getQuantidade() > 0){
+                    if ((produto == 1) && (s.getQuantidade() > 0) && (dinheiro >= s.getValor())){
                         Sukita.retirarRefrigerante();
-                    }else if(produto == 2 && c.getQuantidade() > 0){
+                    }else if((produto == 2) && (c.getQuantidade() > 0) && (dinheiro >= c.getValor())){
                         CocaCola.retirarRefrigerante();
-                    }else if(produto == 3 && p.getQuantidade() > 0){
+                    }else if((produto == 3) && (p.getQuantidade() > 0) && (dinheiro >= p.getValor())){
                         Sprite.retirarRefrigerante();
                     }
                     break;
@@ -63,8 +63,8 @@ public class Teste {
                         Sukita.inserirRefrigerante(qtdSukita);
                         System.out.println("Nova quantidade:");
                         Sukita.consultarEstoque();
-
                         System.out.println();
+
                         System.out.println("Quantidade de Coca Cola:");
                         CocaCola.consultarEstoque();
                         System.out.println("Inserir Coca Cola:");
@@ -72,8 +72,8 @@ public class Teste {
                         CocaCola.inserirRefrigerante(qtdCocaCola);
                         System.out.println("Nova quantidade:");
                         CocaCola.consultarEstoque();
-
                         System.out.println();
+
                         System.out.println("Quantidade de Sprite:");
                         Sprite.consultarEstoque();
                         System.out.println("Inserir Sprite:");
@@ -81,6 +81,7 @@ public class Teste {
                         Sprite.inserirRefrigerante(qtdSprite);
                         System.out.println("Nova quantidade:");
                         Sprite.consultarEstoque();
+                        System.out.println();
                     }
                     else if(funcao == 2){
                         System.out.println("INSERIR MODEDAS...");
@@ -92,6 +93,7 @@ public class Teste {
                         vendaRefri.inserirMoedas(moeda);
                         System.out.println("Novo valor para troco:");
                         vendaRefri.verificarTroco();
+                        System.out.println();
                     }
                     else if(funcao == 3){
                         System.out.println("HISTÓRICO DE VENDAS..");
@@ -99,6 +101,7 @@ public class Teste {
                         System.out.println("Sukita: "+Venda.vendaSukita);
                         System.out.println("Coca Cola: "+Venda.vendaCocaCola);
                         System.out.println("Sprite: "+Venda.vendaSprite);
+                        System.out.println();
                     }
                     else if(funcao == 4){
                         System.out.println("CAIXA DA MAQUINA..");
